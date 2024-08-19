@@ -2,12 +2,14 @@
 
 | Column             | Type    | Options     |
 | ------------------ | ------  | ----------- |
-| nickname               | string  | null: false |
+| nickname           | string  | null: false |
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false |
-| name               | string  | null: false |
-| name_kana          | string  | null: false |
-| birthday           | string  | null: false |
+| last_name          | string  | null: false |
+| last_name_kana     | string  | null: false |
+| first_name         | string  | null: false |
+| first_name_kana    | string  | null: false |
+| birthday           | date    | null: false |
 
 ### Association
 
@@ -25,27 +27,24 @@
 | category_id        | integer   | null: false |
 | condition_id       | integer   | null: false |
 | charge_id          | integer   | null: false |
-| prefectures_id     | integer   | null: false |
+| prefecture_id      | integer   | null: false |
 | date_id            | integer   | null: false |
 
 ### Association
 
 - belongs_to :user
-- has_one    :orders
+- has_one    :order
 
 ## orders テーブル
 
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user_id             | string    | null: false, foreign_key: true |
-| item_id             | string    | null: false, foreign_key: true |
-| quantity            | integer   | null: false |
-| total_price         | integer   | null: false |
-| status              | string    | null: false |
+| Column | Type       | Options    |
+| ------ | ---------- | ---------- |
+| user                | references | null: false, foreign_key: true |
+| item                | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :items
+- belongs_to :item
 - belongs_to :user
 - has_one    :shipping_add
 
@@ -55,7 +54,7 @@
 | ------------------ | ------    | ----------- |
 | order              | references| null: false, foreign_key: true |
 | postal_code        | string    | null: false |
-| prefectures_id     | integer   | null: false |
+| prefecture_id      | integer   | null: false |
 | city               | string    | null: false |
 | address_line1:     | string    | null: false |
 | address_line2:     | string    |              

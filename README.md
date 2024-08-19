@@ -2,34 +2,36 @@
 
 | Column             | Type    | Options     |
 | ------------------ | ------  | ----------- |
-| name               | string  | null: false |
+| nickname               | string  | null: false |
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false |
-| phone_number       | integer | null: false |
-| address            | string  | null: false |
+| name               | string  | null: false |
+| name_kana          | string  | null: false |
+| birthday           | string  | null: false |
 
 ### Association
 
 - has_many :items
 - has_many :orders
-- has_many :shipping_add
 
 ## items テーブル
 
 | Column             | Type      | Options     |
 | ------------------ | ------    | ----------- |
-| user_id            | string    | null: false, foreign_key: true |
+| user               | references| null: false, foreign_key: true |
 | item_name          | string    | null: false |
 | description        | text      | null: false |
 | price              | integer   | null: false |
-| category           | text      | null: false |
-| condition          | text      | null: false |
-| stock              | integer   | null: false |
+| category_id        | integer   | null: false |
+| condition_id       | integer   | null: false |
+| charge_id          | integer   | null: false |
+| prefectures_id     | integer   | null: false |
+| date_id            | integer   | null: false |
 
 ### Association
 
 - belongs_to :user
-- has_many   :orders
+- has_one    :orders
 
 ## orders テーブル
 
@@ -51,17 +53,14 @@
 
 | Column             | Type      | Options     |
 | ------------------ | ------    | ----------- |
-| user_id            | string    | null: false, foreign_key: true |
-| order_id           | string    | null: false, foreign_key: true |
-| recipient_name     | string    | null: false |
+| order              | references| null: false, foreign_key: true |
+| postal_code        | string    | null: false |
+| prefectures_id     | integer   | null: false |
+| city               | string    | null: false |
 | address_line1:     | string    | null: false |
 | address_line2:     | string    |              
-| state              | string    | null: false |
-| city               | string    | null: false |
-| postal_code        | integer   | null: false |
-| phone_number       | integer   | null: false |
+| phone_number       | string    | null: false |
 
 ### Association
 
 - belongs_to :order
-- belongs_to :user

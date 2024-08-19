@@ -56,8 +56,8 @@
 | postal_code        | string    | null: false |
 | prefecture_id      | integer   | null: false |
 | city               | string    | null: false |
-| address_line1:     | string    | null: false |
-| address_line2:     | string    |              
+| address_line_main  | string    | null: false |
+| address_line_sub   | string    |              
 | phone_number       | string    | null: false |
 
 ### Association

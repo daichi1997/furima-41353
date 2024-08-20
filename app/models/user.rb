@@ -12,6 +12,6 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true,
                               format: { with: /\A[ァ-ヶー]+\z/, message: 'is invalid. Input full-width katakana characters.' }
   validates :birthday,        presence: true
-  validates :password,        presence: true, length: { minimum: 6 },
-                              format: { with: /\A(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+\z/, message: 'is invalid. Include both letters and numbers' }
+  validates :password,
+            format: { with: /\A(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+\z/, message: 'is invalid. Include both letters and numbers' }
 end

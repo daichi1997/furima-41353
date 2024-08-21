@@ -1,9 +1,9 @@
-class Shipping_date < ActiveHash::Base
+class ShippingDate < ActiveHash::Base
   self.data = [
-    { id: 1, name: '---' },
-    { id: 2, name: '1~2日で発送' },
-    { id: 3, name: '2~3日で発送' },
-    { id: 4, name: '4~7日で発送' },
+    { id: 1, item_name: '---' },
+    { id: 2, item_name: '1~2日で発送' },
+    { id: 3, item_name: '2~3日で発送' },
+    { id: 4, item_name: '4~7日で発送' },
   ]
 
   include ActiveHash::Associations

@@ -34,6 +34,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+      @item.destroy
+      redirect_to root_path
+  end
+
   private
 
   def item_params
@@ -44,11 +49,11 @@ class ItemsController < ApplicationController
   def contributor_confirmation
     @item = Item.find(params[:id])
     return if current_user == @item.user
+
     redirect_to root_path
   end
 
   def set_item
-  @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
-
 end

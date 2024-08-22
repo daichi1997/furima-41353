@@ -34,6 +34,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def item_params
@@ -44,11 +52,11 @@ class ItemsController < ApplicationController
   def contributor_confirmation
     @item = Item.find(params[:id])
     return if current_user == @item.user
+
     redirect_to root_path
   end
 
   def set_item
-  @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
-
 end

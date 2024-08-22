@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
-
   def index
     @items = Item.all.order('created_at DESC')
   end
@@ -35,10 +34,7 @@ class ItemsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
-
   end
-
-
 
   private
 
@@ -49,9 +45,8 @@ class ItemsController < ApplicationController
 
   def contributor_confirmation
     @item = Item.find(params[:id])
-    unless current_user == @item.user
-      redirect_to root_path 
-    end
-  end
+    return if current_user == @item.user
 
+    redirect_to root_path
+  end
 end

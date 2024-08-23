@@ -5,7 +5,7 @@ RSpec.describe OrderAdd, type: :model do
     @user = FactoryBot.create(:user)
     @item = FactoryBot.create(:item, user: @user)
     @order_add = FactoryBot.build(:order_add, user_id: @user.id, item_id: @item.id, token: 'tok_abcdefghijk00000000000000000')
-    sleep(1)
+    sleep(0.2)
   end
 
   describe '商品購入機能' do
@@ -63,6 +63,11 @@ RSpec.describe OrderAdd, type: :model do
         @order_add.phone_number = '１２３４５６７８９０'
         @order_add.valid?
         expect(@order_add.errors.full_messages).to include('Phone number is invalid.')
+      end
+      it 'tokenが空では登録できないこと' do
+        @order_add.token = nil
+        @order_add.valid?
+        expect(@order_add.errors.full_messages).to include("Token can't be blank")
       end
       it 'userが紐付いていないと保存できない' do
         @order_add.user_id = nil

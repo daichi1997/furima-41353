@@ -195,7 +195,6 @@ GEM
       racc
     payjp (0.0.15)
       rest-client (~> 2.0)
-    pg (1.5.7)
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
@@ -353,7 +352,6 @@ DEPENDENCIES
   mini_magick
   mysql2 (~> 0.5)
   payjp
-  pg
   puma (~> 5.0)
   rails (~> 7.0.0)
   rspec-rails (~> 4.0.0)
